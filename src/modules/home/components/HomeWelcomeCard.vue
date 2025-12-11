@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
-import { useHome } from "@/modules/home/composables/useHome";
+import { onMounted } from 'vue';
+import { useHome } from '@/modules/home/composables/useHome';
 const props = defineProps<{ title?: string }>();
 
 const { data, load } = useHome();
@@ -10,7 +10,7 @@ onMounted(load);
 
 <template>
   <div class="card">
-    <h2>{{ props.title ?? "Bienvenido" }}</h2>
+    <h2>{{ props.title ?? 'Bienvenido' }}</h2>
     <p>{{ data.message ?? `Este componente es privado del módulo 'home'.` }}</p>
   </div>
 </template>
