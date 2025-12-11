@@ -2,16 +2,34 @@ import js from '@eslint/js';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import pluginVue from 'eslint-plugin-vue';
-import { defineConfig } from 'eslint/config';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
-export default defineConfig([
+export default tseslint.config(
+  { ignores: ['dist', 'node_modules', 'public'] },
   {
-    files: ['**/*.{js,mjs,cjs,ts,mts,cts,vue}'],
-    plugins: { js },
-    extends: ['js/recommended'],
-    languageOptions: { globals: globals.browser },
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      ...pluginVue.configs['flat/recommended'],
+    ],
+
+    files: ['**/*.{ts,vue}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    rules: {
+      // Aquí puedes añadir tus reglas personalizadas, por ejemplo:
+      // 'vue/multi-word-component-names': 'off',
+    },
   },
-  tseslint.configs.recommended,
-  pluginVue.configs['flat/essential'],
-  { files: ['**/*.vue'], languageOptions: { parserOptions: { parser: tseslint.parser } } },
-]);
+  {
+    files: ['**/*.vue'],
+    languageOptions: {
+      parserOptions: {
+        parser: tseslint.parser,
+      },
+    },
+  },
+  eslintConfigPrettier
+);

@@ -73,8 +73,8 @@ Integración con Vite / TypeScript:
 Ejemplo mínimo de `index.ts` (módulo `home`):
 
 ```ts
-export { default as HomeView } from "./views/HomeView.vue";
-export * from "./composables/useHome";
+export { default as HomeView } from './views/HomeView.vue';
+export * from './composables/useHome';
 ```
 
 Ejemplo mínimo de `homeService.ts`:
@@ -82,15 +82,15 @@ Ejemplo mínimo de `homeService.ts`:
 ```ts
 export async function fetchHomeData(): Promise<{ message: string }> {
   // Llamada fetch o axios
-  return { message: "Hola desde home service" };
+  return { message: 'Hola desde home service' };
 }
 ```
 
 Ejemplo mínimo de `useHome.ts` (composable):
 
 ```ts
-import { ref } from "vue";
-import { fetchHomeData } from "../services/homeService";
+import { ref } from 'vue';
+import { fetchHomeData } from '../services/homeService';
 
 export function useHome() {
   const data = ref<{ message?: string }>({});

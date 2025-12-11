@@ -1,16 +1,16 @@
-import { createRouter, createWebHistory } from "vue-router";
-import type { RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    name: "Home",
-    component: () => import("@/modules/home/views/HomeView.vue"),
+    path: '/',
+    name: 'Home',
+    component: () => import('@/modules/home/views/HomeView.vue'),
   },
   {
-    path: "/:pathMatch(.*)*",
-    name: "NotFound",
-    redirect: "/",
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    redirect: '/',
   },
 ];
 
