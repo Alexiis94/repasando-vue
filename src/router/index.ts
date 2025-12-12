@@ -1,3 +1,4 @@
+import { useAuthStore } from '@/modules/auth/store/use-auth-store';
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 
@@ -26,7 +27,8 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = false; // Replace with real auth check
+  const { isAuthenticated } = useAuthStore();
+  console.log(isAuthenticated);
 
   if (to.meta.requiresAuth && !isAuthenticated) {
     next({ name: 'Login' });
