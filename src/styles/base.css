@@ -1,0 +1,105 @@
+/* styles/base.css */
+
+/* =========================================
+   ROOT DEFAULTS
+   ========================================= */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--palette-neutral-600);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================
+   TYPOGRAPHY HIERARCHY
+   ========================================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  margin-top: 0;
+  margin-bottom: var(--space-4); /* Usando tu escala de espacio */
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  letter-spacing: -0.02em;
+}
+h2 {
+  font-size: var(--font-size-3xl);
+  letter-spacing: -0.01em;
+}
+h3 {
+  font-size: var(--font-size-2xl);
+}
+h4 {
+  font-size: var(--font-size-xl);
+}
+h5 {
+  font-size: var(--font-size-lg);
+}
+
+p {
+  margin-bottom: var(--space-4);
+  max-width: 70ch;
+  color: var(--color-text-secondary); /* Usando semántica secundaria para cuerpo */
+}
+
+/* =========================================
+   INTERACTIVE ELEMENTS
+   ========================================= */
+a {
+  /* Reconstrucción del color primario porque tu token semántico era de background */
+  color: hsl(var(--palette-primary-h), var(--palette-primary-s), var(--palette-primary-l));
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* Focus Rings usando tus variables */
+:focus-visible {
+  outline: 2px solid var(--ring-color);
+  outline-offset: var(--ring-offset);
+  border-radius: 2px;
+}
+
+/* =========================================
+   FORMS & LAYOUT
+   ========================================= */
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--color-border-subtle);
+  margin: var(--space-8) 0;
+}

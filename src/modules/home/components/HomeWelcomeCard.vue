@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { useHome } from '@/modules/home/composables/useHome';
+import { useHome } from '@/modules/home/composables/use-home';
+
 const props = defineProps<{ title?: string }>();
 
 const { data, load } = useHome();

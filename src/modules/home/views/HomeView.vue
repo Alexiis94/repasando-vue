@@ -8,8 +8,4 @@ import HomeWelcomeCard from '@/modules/home/components/HomeWelcomeCard.vue';
   </div>
 </template>
 
-<style scoped>
-h1 {
-  font-size: 2em;
-}
-</style>
+<style scoped></style>

@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import { fetchHomeData } from '@/modules/home/services/homeService';
+import { fetchHomeData } from '@/modules/home/services/home-service';
 
 export function useHome() {
   const data = ref<{ message?: string }>({});
