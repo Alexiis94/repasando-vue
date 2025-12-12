@@ -28,10 +28,9 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const { isAuthenticated } = useAuthStore();
-  console.log(isAuthenticated);
 
   if (to.meta.requiresAuth && !isAuthenticated) {
-    next({ name: 'Login' });
+    next({ name: 'Login', query: { redirectTo: to.fullPath } });
   } else {
     next();
   }

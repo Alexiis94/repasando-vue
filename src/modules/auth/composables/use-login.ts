@@ -1,8 +1,8 @@
 import { useForm } from 'vee-validate';
-import { toTypedSchema } from '@vee-validate/yup';
-import { loginSchema } from '../schemas/login-schema';
 import { useRouter } from 'vue-router';
-import { useAuthStore } from '../store/use-auth-store';
+import { toTypedSchema } from '@vee-validate/yup';
+import { loginSchema } from '@/modules/auth/schemas/login-schema';
+import { useAuthStore } from '@/modules/auth/store/use-auth-store';
 
 const useLogin = () => {
   const authStore = useAuthStore();

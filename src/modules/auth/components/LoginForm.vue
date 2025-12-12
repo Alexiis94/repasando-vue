@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useLogin from '../composables/use-login';
+import useLogin from '@/modules/auth/composables/use-login';
 
 const { errors, isSubmitting, onSubmit, email, emailAttrs, password, passwordAttrs } = useLogin();
 </script>

@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import type { User } from '@/modules/auth/types';
-import type { LoginDTO } from '../schemas/login-schema';
-import { authServices } from '../services/auth-service';
+import type { LoginDTO } from '@/modules/auth/schemas/login-schema';
+import { authServices } from '@/modules/auth/services/auth-service';
 
 export const useAuthStore = defineStore('auth', () => {
   // STATE
@@ -22,14 +22,11 @@ export const useAuthStore = defineStore('auth', () => {
 
     try {
       const response = await authServices.login(credentials);
-      console.log(response);
 
       token.value = response.access_token;
       refreshToken.value = response.refresh_token;
 
       setToken(token.value, refreshToken.value);
-
-      return response; // Retornamos para que la UI pueda decidir redirección
     } catch (error: any) {
       token.value = null;
       refreshToken.value = null;
@@ -40,19 +37,23 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  function logout() {
+    user.value = null;
+    setToken(null, null);
+  }
+
   function setToken(newToken: string | null, newRefreshToken: string | null) {
     if (newToken) {
       sessionStorage.setItem('token', newToken);
+    } else {
+      sessionStorage.removeItem('token');
     }
 
     if (newRefreshToken) {
       sessionStorage.setItem('refreshToken', newRefreshToken);
+    } else {
+      sessionStorage.removeItem('refreshToken');
     }
-  }
-
-  function logout() {
-    user.value = null;
-    setToken(null, null);
   }
 
   return {
